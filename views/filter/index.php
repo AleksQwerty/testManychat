@@ -38,4 +38,7 @@ require_once (ROOT . '/views/main/header.php');
         </div>
     </div>
 </div>
-<?php require_once (ROOT . '/views/main/footer.php');?>
+
+<?php
+require_once (ROOT . '/views/main/footer.php');
+?>
