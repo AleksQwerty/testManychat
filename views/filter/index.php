@@ -42,3 +42,4 @@ require_once (ROOT . '/views/main/header.php');
 <?php
 require_once (ROOT . '/views/main/footer.php');
 ?>
+
