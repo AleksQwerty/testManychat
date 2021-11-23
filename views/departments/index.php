@@ -1,28 +1,9 @@
 <?php
 require_once (ROOT . '/controllers/DepartmentsController.php');
+require_once (ROOT . '/views/main/header.php');
 ?>
-<!doctype html>
-<html lang="en" xmlns="http://www.w3.org/1999/html">
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-          integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
-
-    <title>Hello, world!</title>
-</head>
-<body>
-<div class="container">
-    <div class="row">
-        <div class="col-12">
-            <?php require_once (ROOT . '/views/main/navbar.php')?>
-            <a href="/departments/create/" class="btn btn-success" data-toggle="modal" data-target="#create"><i class="fa fa-plus"></i></a>
-            <table class="table table-striped table-hover">
+    <a href="/departments/create/" class="btn btn-success" data-toggle="modal" data-target="#create"><i class="fa fa-plus"></i></a>
+    <table class="table table-striped table-hover">
                 <thead class="thead-dark">
                 <th>ID</th>
                 <th>Наименование отдела</th>
@@ -52,7 +33,7 @@ require_once (ROOT . '/controllers/DepartmentsController.php');
                                     <form action="update/<?=$item->id?>" method="post">
                                         <div class="form-group">
                                             <small>Наименование Отдела</small>
-                                            <input type="text" class="form-control" name="name" value="<?=$item->name?>">
+                                            <input type="text" class="form-control" name="name" value="<?=$item->name?>" required>
                                         </div>
                                 </div>
                                 <div class="modal-footer">
@@ -116,17 +97,4 @@ require_once (ROOT . '/controllers/DepartmentsController.php');
         </div>
     </div>
 </div>
-<!-- Modal Create-->
-<!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-        crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-        crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-        crossorigin="anonymous"></script>
-</body>
-</html>
+<?php require_once (ROOT . '/views/main/footer.php');?>
