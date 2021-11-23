@@ -16,4 +16,4 @@ include 'debug.php';
 
 $router = new Router();
 $router->run();
-
+debug($_POST);
