@@ -7,7 +7,7 @@ require_once (ROOT . '/controllers/EmployeesController.php');
 require_once (ROOT . '/models/Employees.php');
 require_once (ROOT . '/views/main/header.php');
 ?>
-<a href="/employees/create/" class="btn btn-success" data-toggle="modal" data-target="#create"><i class="fa fa-plus"></i></a>
+<a href="/employees/create/" class="btn btn-success" data-toggle="modal" data-target="#create" title="Добавить нового сотрудника"><i class="fa fa-plus"></i></a>
 <table class="table table-striped table-hover">
                 <thead class="thead-dark">
                 <th>ID</th>
@@ -34,8 +34,8 @@ require_once (ROOT . '/views/main/header.php');
                         <td><?=(new Employees())->getDepartmentNameById($item->department_id) ?? null?></td>
                         <td><?=(new Employees())->getProjectNameById($item->project_id) ?? null?></td>
                         <td>
-                            <a href="/employees/update/<?=$item->id?>" class="btn btn-success" data-toggle="modal" data-target="#update<?=$item->id?>"><i class="fa fa-edit"></i></a>
-                            <a href="/employees/delete/<?=$item->id?>" class="btn btn-danger" data-toggle="modal" data-target="#delete<?=$item->id?>"><i class="fa fa-trash-alt"></i></a>
+                            <a href="/employees/update/<?=$item->id?>" class="btn btn-success" data-toggle="modal" data-target="#update<?=$item->id?>" title="Изменить данные сотрудника"><i class="fa fa-edit"></i></a>
+                            <a href="/employees/delete/<?=$item->id?>" class="btn btn-danger" data-toggle="modal" data-target="#delete<?=$item->id?>" title="Удалить сотрудника"><i class="fa fa-trash-alt"></i></a>
                         </td>
                     </tr>
                     <!-- Modal Update-->

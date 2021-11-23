@@ -2,7 +2,7 @@
 require_once (ROOT . '/controllers/ProjectsController.php');
 require_once (ROOT . '/views/main/header.php');
 ?>
-<a href="/projects/create/" class="btn btn-success" data-toggle="modal" data-target="#create"><i class="fa fa-plus"></i></a>
+<a href="/projects/create/" class="btn btn-success" data-toggle="modal" data-target="#create" title="Добавить новый проект"><i class="fa fa-plus"></i></a>
 <table class="table table-striped table-hover">
                 <thead class="thead-dark">
                 <th>ID</th>
@@ -15,8 +15,9 @@ require_once (ROOT . '/views/main/header.php');
                         <td><?=$item->id?></td>
                         <td><?=$item->name?></td>
                         <td>
-                            <a href="/projects/update/<?=$item->id?>" class="btn btn-success" data-toggle="modal" data-target="#update<?=$item->id?>"><i class="fa fa-edit"></i></a>
-                            <a href="/projects/delete/<?=$item->id?>" class="btn btn-danger" data-toggle="modal" data-target="#delete<?=$item->id?>"><i class="fa fa-trash-alt"></i></a>
+                            <a href="/projects/update/<?=$item->id?>" class="btn btn-success" data-toggle="modal" data-target="#update<?=$item->id?>" title="Изменить название проекта"><i class="fa fa-edit" ></i></a>
+                            <a href="/projects/delete/<?=$item->id?>" class="btn btn-danger" data-toggle="modal" data-target="#delete<?=$item->id?>" title="Удалить проект"><i class="fa fa-trash-alt"></i></a>
+                            <a href="/projects/set/<?=$item->id?>" class="btn btn-secondary" data-toggle="modal" data-target="#set<?=$item->id?>" title="Добавить в проект сотрудника"><i class="fa fa-circle"></i></a>
                         </td>
                     </tr>
                     <!-- Modal Update-->
