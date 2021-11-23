@@ -12,6 +12,10 @@ class Reports
         $this->dbConnection = Db::getConnection();
     }
 
+    /**
+     * получение списка отчетов сформированных по проектам
+     * @return array
+     */
     public function getReportsList()
     {
         $sql = <<<SQL

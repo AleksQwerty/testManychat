@@ -15,6 +15,10 @@ class Departments
         $this->dbConnection = Db::getConnection();
     }
 
+    /**
+     * получение списка отделов
+     * @return array
+     */
     public function getDepartmentsList()
     {
         $sql = $this->dbConnection->prepare("SELECT * FROM main.departments order by id asc");
@@ -23,6 +27,11 @@ class Departments
 
     }
 
+    /**
+     * получение конкретного отдела
+     * @param $id
+     * @return array
+     */
     public function getDepartmentById($id)
     {
         $id = intval($id);
@@ -30,6 +39,11 @@ class Departments
         return $query->fetchAll(PDO::FETCH_OBJ);
     }
 
+    /**
+     * удаление отдела
+     * @param $id
+     * @return bool
+     */
     public function deleteRecord($id)
     {
         $id = intval($id);
@@ -40,6 +54,11 @@ class Departments
         return $result->execute();
     }
 
+    /**
+     * добавление нового отдела
+     * @param array $options
+     * @return false|string
+     */
     public function addNewRecord(array $options)
     {
         $departmentName = $options['name'];
@@ -55,6 +74,12 @@ values (?);";
 
     }
 
+    /**
+     * обнолвние наименования отдела
+     * @param array $options
+     * @param       $id
+     * @return false|string
+     */
     public function updateRecord(array $options, $id)
     {
         $departmentName = $options['name'];

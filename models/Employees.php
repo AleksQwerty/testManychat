@@ -14,6 +14,10 @@ class Employees
         $this->dbConnection = Db::getConnection();
     }
 
+    /**
+     * получение списка всех сотрудников
+     * @return array
+     */
     public function getEmployeesList()
     {
         $sql = $this->dbConnection->prepare("SELECT * FROM main.employees order by id asc");
@@ -21,6 +25,11 @@ class Employees
         return $sql->fetchAll(PDO::FETCH_OBJ);
     }
 
+    /**
+     * удаление сотрудника
+     * @param $id
+     * @return bool
+     */
     public function deleteRecord($id)
     {
         $id = intval($id);
@@ -32,7 +41,7 @@ class Employees
     }
 
     /**
-     * Получение наименования отдела по отделу
+     * Получение наименования отдела по id
      * @param $departmentId
      * @return mixed
      */
@@ -50,6 +59,7 @@ class Employees
     }
 
     /**
+     * Получение наименования проекта по id
      * @param $projectId
      * @return mixed
      */
@@ -66,6 +76,11 @@ class Employees
         }
     }
 
+    /**
+     * получаем сотрудников из конкретнго отдела
+     * @param $departmentId
+     * @return array
+     */
     public function getEmployeesByDepartment($departmentId)
     {
         $sql = "SELECT * FROM main.employees where department_id =:id order by name asc";
@@ -75,6 +90,11 @@ class Employees
         return $result->fetchAll(PDO::FETCH_OBJ);
     }
 
+    /**
+     * получаем сотрудников по конкретному проекту
+     * @param $projectId
+     * @return array
+     */
     public function getEmployeesByProject($projectId)
     {
         $sql = "SELECT * FROM main.employees where project_id =:id order by name asc";
@@ -84,6 +104,10 @@ class Employees
         return $result->fetchAll(PDO::FETCH_OBJ);
     }
 
+    /**
+     * получаем id и name списка отделов
+     * @return array
+     */
     public function getDepartmentList()
     {
         $sql = $this->dbConnection->prepare("SELECT id, name FROM main.departments order by name asc");
@@ -91,6 +115,10 @@ class Employees
         return $sql->fetchAll(PDO::FETCH_OBJ);
     }
 
+    /**
+     *  получаем id и name списка проектов
+     * @return array
+     */
     public function getProjectList()
     {
         $sql = $this->dbConnection->prepare("SELECT id, name FROM main.projects order by name asc");
@@ -98,6 +126,11 @@ class Employees
         return $sql->fetchAll(PDO::FETCH_OBJ);
     }
 
+    /**
+     * /добавление нового сотрудника
+     * @param array $options
+     * @return false|string
+     */
     public function addNewRecord(array $options)
     {
         $employeeName = $options['name'];
@@ -130,6 +163,12 @@ values (?, ?, ?, ?, ?, ?, ?);";
         return false;
     }
 
+    /**
+     * обновление данных сотрудника
+     * @param array $options
+     * @param       $id
+     * @return false|string
+     */
     public function updateRecord(array $options, $id)
     {
         $employeeName = $options['name'];
@@ -160,5 +199,4 @@ values (?, ?, ?, ?, ?, ?, ?);";
         }
         return false;
     }
-
 }

@@ -22,7 +22,6 @@ class DepartmentsController
     public function actionView($id)
     {
         $departmentList = (new Departments())->getDepartmentById($id);
-        debug($departmentList);
         return true;
     }
 

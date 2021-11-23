@@ -97,8 +97,6 @@ class Router
      */
     private function getArrParameters($controllerObject, $actionName, $parameters)
     {
-//        echo '<pre>';
-//        var_dump(['$controllerObject' => $controllerObject, '$actionName' => $actionName, '$parameters' => $parameters]);
         return call_user_func_array([$controllerObject, $actionName], $parameters);
     }
 
@@ -108,15 +106,10 @@ class Router
         //достаем строку запроса
         $uri = $this->getUri();
 
-//        var_dump($uri);
-//        var_dump($this->routes);
-
-
         foreach ($this->routes as $uriPattern => $path) {
 
             //сравниваем $uriPattern и $uri
             if (preg_match("~$uriPattern~", $uri)){
-//                debug($uriPattern . '-' . $uri);
                 $internalRoute = preg_replace("~$uriPattern~", $path, $uri);
 
 
