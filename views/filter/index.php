@@ -19,7 +19,7 @@ require_once (ROOT . '/views/main/header.php');
                 </thead>
                 <tbody>
                 <?php
-
+                if (count($employeesList) > 0):
                 foreach ($employeesList as $item) {?>
                     <tr>
                         <td><?=$item->id?></td>
@@ -32,6 +32,11 @@ require_once (ROOT . '/views/main/header.php');
                         <td><?=(new Employees())->getProjectNameById($item->project_id) ?? null?></td>
                     </tr>
                 <?php }?>
+                <?php else :?>
+                    <tr>
+                        <td>В этом проекте еще нет сотрудников</td>
+                    </tr>
+                <?php endif;?>
                 </tbody>
             </table>
             </table>

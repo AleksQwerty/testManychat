@@ -2,7 +2,7 @@
 require_once (ROOT . '/controllers/DepartmentsController.php');
 require_once (ROOT . '/views/main/header.php');
 ?>
-    <a href="/departments/create/" class="btn btn-success" data-toggle="modal" data-target="#create"><i class="fa fa-plus"></i></a>
+    <a href="/departments/create/" class="btn btn-success" data-toggle="modal" data-target="#create" title="Добавить новый отдел"><i class="fa fa-plus"></i></a>
     <table class="table table-striped table-hover">
                 <thead class="thead-dark">
                 <th>ID</th>
@@ -15,8 +15,8 @@ require_once (ROOT . '/views/main/header.php');
                         <td><?=$item->id?></td>
                         <td><?=$item->name?></td>
                         <td>
-                            <a href="/departments/update/<?=$item->id?>" class="btn btn-success" data-toggle="modal" data-target="#update<?=$item->id?>"><i class="fa fa-edit"></i></a>
-                            <a href="/departments/delete/<?=$item->id?>" class="btn btn-danger" data-toggle="modal" data-target="#delete<?=$item->id?>"><i class="fa fa-trash-alt"></i></a>
+                            <a href="/departments/update/<?=$item->id?>" class="btn btn-success" data-toggle="modal" data-target="#update<?=$item->id?>" title="Изменить наименование отдела"><i class="fa fa-edit"></i></a>
+                            <a href="/departments/delete/<?=$item->id?>" class="btn btn-danger" data-toggle="modal" data-target="#delete<?=$item->id?>" title="Удалить отдел"><i class="fa fa-trash-alt"></i></a>
                         </td>
                     </tr>
                     <!-- Modal Update-->

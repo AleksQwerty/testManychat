@@ -14,6 +14,11 @@ class Genders
         $this->dbConnection = Db::getConnection();
     }
 
+    /**
+     * получение конкретного пола
+     * @param $id
+     * @return mixed
+     */
     public function getGendersById($id)
     {
         $id = intval($id);
@@ -27,6 +32,11 @@ class Genders
         }
 
     }
+
+    /**
+     * получение списка полов
+     * @return array
+     */
     public function getGendersList()
     {
         $sql = $this->dbConnection->prepare("SELECT * FROM main.genders order by id asc");

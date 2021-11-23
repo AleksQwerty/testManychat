@@ -1,8 +1,11 @@
 <?php
+
+use models\Employees;
+
 require_once (ROOT . '/controllers/ProjectsController.php');
 require_once (ROOT . '/views/main/header.php');
 ?>
-<a href="/projects/create/" class="btn btn-success" data-toggle="modal" data-target="#create"><i class="fa fa-plus"></i></a>
+<a href="/projects/create/" class="btn btn-success" data-toggle="modal" data-target="#create" title="Добавить новый проект"><i class="fa fa-plus"></i></a>
 <table class="table table-striped table-hover">
                 <thead class="thead-dark">
                 <th>ID</th>
@@ -15,8 +18,9 @@ require_once (ROOT . '/views/main/header.php');
                         <td><?=$item->id?></td>
                         <td><?=$item->name?></td>
                         <td>
-                            <a href="/projects/update/<?=$item->id?>" class="btn btn-success" data-toggle="modal" data-target="#update<?=$item->id?>"><i class="fa fa-edit"></i></a>
-                            <a href="/projects/delete/<?=$item->id?>" class="btn btn-danger" data-toggle="modal" data-target="#delete<?=$item->id?>"><i class="fa fa-trash-alt"></i></a>
+                            <a href="/projects/update/<?=$item->id?>" class="btn btn-success" data-toggle="modal" data-target="#update<?=$item->id?>" title="Изменить название проекта"><i class="fa fa-edit" ></i></a>
+                            <a href="/projects/delete/<?=$item->id?>" class="btn btn-danger" data-toggle="modal" data-target="#delete<?=$item->id?>" title="Удалить проект"><i class="fa fa-trash-alt"></i></a>
+                            <a href="/projects/set-project/<?=$item->id?>" class="btn btn-secondary" data-toggle="modal" data-target="#set-project<?=$item->id?>" title="Добавить в проект сотрудника"><i class="fa fa-circle"></i></a>
                         </td>
                     </tr>
                     <!-- Modal Update-->
@@ -45,6 +49,42 @@ require_once (ROOT . '/views/main/header.php');
                         </div>
                     </div>
                     <!-- Modal Update-->
+                    <!-- Modal set project-->
+                    <div class="modal fade" id="set-project<?=$item->id;?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Изменить запись</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form action="set-project/<?=$item->id?>" method="post">
+                                        <div class="form-group">
+                                            <small>Наименование Проекта</small>
+                                            <input type="text" class="form-control" name="name" value="<?=$item->name?>" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <small>Выберите сотрудников для проекта</small>
+                                            <select name="employee_id[]" multiple="multiple">
+                                                    <?php foreach ((new Employees())->getEmployeesList() as $employee): ?>
+                                                    <option value="<?=$employee->id?>">
+                                                        <?=($employee->name)?>
+                                                    </option>
+                                                <?php endforeach; ?>
+                                            </select>
+                                        </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                                    <button type="submit" class="btn btn-primary" name="submit" value="submit">Сохранить</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Modal set project-->
                     <!-- Modal delete-->
                     <div class="modal fade" id="delete<?=$item->id;?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
