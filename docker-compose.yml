@@ -1,0 +1,44 @@
+# Пропишем версию
+version: '3.8'
+# Перечислим сервисы
+services:
+    psql:
+        image: postgres:latest
+        # Назовем свой контейнер по красивому
+        container_name: pgsql
+        ports:
+            # Проброс портов для внешнего доступа 
+            - 5432:5432
+        volumes:
+            - ./docker/psql/data:/var/lib/postgresql/data
+            - ./docker/psql/init.sql:/docker-entrypoint-initdb.d/db.sql
+        environment:
+            POSTGRES_DB: test
+            POSTGRES_USER: test
+            POSTGRES_PASSWORD: testLocal
+            PGDATA: /tmp
+    php:
+        # Билдим с помощью dockerfile указав директорию где он лежит
+        build: docker/php
+        container_name: php-fpm
+        volumes:
+            - ./:/var/www/app/
+        links:
+            - psql
+    nginx:
+        image: nginx:latest
+        # Назовем свой контейнер по красивому
+        container_name: nginxx
+        # Проброс портов
+        ports:
+            - 80:80
+        # Проброс папок
+        volumes:
+            - ./docker/nginx/core:/etc/nginx/conf.d
+            - ./docker/nginx/logs:/var/log/nginx/
+            - ./docker/nginx/html:/usr/share/nginx/html/
+            - ./:/var/www/app/
+        # Укажем зависимости
+        links:
+            - php
+            - psql
