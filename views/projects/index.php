@@ -33,7 +33,7 @@ require_once (ROOT . '/views/main/header.php');
                                     <form action="update/<?=$item->id?>" method="post">
                                         <div class="form-group">
                                             <small>Наименование Проекта</small>
-                                            <input type="text" class="form-control" name="name" value="<?=$item->name?>">
+                                            <input type="text" class="form-control" name="name" value="<?=$item->name?>" required>
                                         </div>
                                 </div>
                                 <div class="modal-footer">
