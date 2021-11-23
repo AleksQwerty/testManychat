@@ -22,8 +22,8 @@ require_once (ROOT . '/views/main/header.php');
                 </thead>
                 <tbody>
                 <?php
-
-                foreach ($employeeList as $item) {?>
+                foreach ($employeeList as $item) {
+                    ?>
                     <tr>
                         <td><?=$item->id?></td>
                         <td><?=$item->name?></td>
