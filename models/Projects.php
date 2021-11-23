@@ -64,7 +64,18 @@ values (?);";
             return $this->dbConnection->lastInsertId();
         }
         return false;
+    }
 
+    public function addNewEmployeesInProject(array $employeeList, $id)
+    {
+//        $placeHolders = rtrim(str_repeat('?,', count($employeeList)) , ',');
+        $strEmp = implode(', ', $employeeList);
+        $result = $this->dbConnection->prepare("UPDATE main.employees
+            SET project_id={$id}, updated_at=now() WHERE id IN ({$strEmp})");
+        if ($result->execute()){
+            return $this->dbConnection->lastInsertId();
+        }
+        return false;
     }
 
 }

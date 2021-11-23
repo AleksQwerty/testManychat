@@ -20,7 +20,7 @@ require_once (ROOT . '/views/main/header.php');
                         <td>
                             <a href="/projects/update/<?=$item->id?>" class="btn btn-success" data-toggle="modal" data-target="#update<?=$item->id?>" title="Изменить название проекта"><i class="fa fa-edit" ></i></a>
                             <a href="/projects/delete/<?=$item->id?>" class="btn btn-danger" data-toggle="modal" data-target="#delete<?=$item->id?>" title="Удалить проект"><i class="fa fa-trash-alt"></i></a>
-                            <a href="/projects/set/<?=$item->id?>" class="btn btn-secondary" data-toggle="modal" data-target="#set<?=$item->id?>" title="Добавить в проект сотрудника"><i class="fa fa-circle"></i></a>
+                            <a href="/projects/set-project/<?=$item->id?>" class="btn btn-secondary" data-toggle="modal" data-target="#set-project<?=$item->id?>" title="Добавить в проект сотрудника"><i class="fa fa-circle"></i></a>
                         </td>
                     </tr>
                     <!-- Modal Update-->
@@ -50,7 +50,7 @@ require_once (ROOT . '/views/main/header.php');
                     </div>
                     <!-- Modal Update-->
                     <!-- Modal set project-->
-                    <div class="modal fade" id="set<?=$item->id;?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="set-project<?=$item->id;?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -60,7 +60,7 @@ require_once (ROOT . '/views/main/header.php');
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <form action="set/<?=$item->id?>" method="post">
+                                    <form action="set-project/<?=$item->id?>" method="post">
                                         <div class="form-group">
                                             <small>Наименование Проекта</small>
                                             <input type="text" class="form-control" name="name" value="<?=$item->name?>" required>

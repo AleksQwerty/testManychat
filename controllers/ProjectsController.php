@@ -75,4 +75,15 @@ class ProjectsController
             return true;
         }
     }
+
+    public function actionSetProject($id)
+    {
+        if (isset($_POST['submit'])) {
+            $employeeList = $_POST['employee_id'];
+            (new Projects())->addNewEmployeesInProject($employeeList, $id);
+            header('Location: /employees/');
+            require_once(ROOT . '/views/projects/index.php');
+            return true;
+        }
+    }
 }
