@@ -28,18 +28,6 @@ class Departments
     }
 
     /**
-     * получение конкретного отдела
-     * @param $id
-     * @return array
-     */
-    public function getDepartmentById($id)
-    {
-        $id = intval($id);
-        $query = $this->dbConnection->query("SELECT * FROM main.departments where id = {$id}");
-        return $query->fetchAll(PDO::FETCH_OBJ);
-    }
-
-    /**
      * удаление отдела
      * @param $id
      * @return bool

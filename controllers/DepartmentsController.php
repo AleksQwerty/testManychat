@@ -19,12 +19,6 @@ class DepartmentsController
         return true;
     }
 
-    public function actionView($id)
-    {
-        $departmentList = (new Departments())->getDepartmentById($id);
-        return true;
-    }
-
     public function actionDelete($id)
     {
         if (isset($_POST['submit'])){

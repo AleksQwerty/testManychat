@@ -12,12 +12,6 @@ class ProjectsController
         return true;
     }
 
-    public function actionView($id)
-    {
-        $departmentList = (new Projects())->getProjectById($id);
-        return true;
-    }
-
     public function actionDelete($id)
     {
         if (isset($_POST['submit'])){

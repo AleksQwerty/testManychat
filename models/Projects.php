@@ -27,18 +27,6 @@ class Projects
     }
 
     /**
-     * получение проекта по его ID
-     * @param $id
-     * @return array
-     */
-    public function getProjectById($id)
-    {
-        $id = intval($id);
-        $query = $this->dbConnection->query("SELECT * FROM main.projects where id = {$id}");
-        return $query->fetchAll(PDO::FETCH_OBJ);
-    }
-
-    /**
      * удаление проекта
      * @param $id
      * @return bool

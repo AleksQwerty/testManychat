@@ -13,12 +13,6 @@ class EmployeesController
         return true;
     }
 
-    public function actionView()
-    {
-        echo 'Просмотр конкретного работника';
-        return true;
-    }
-
     public function actionDelete($id)
     {
         if (isset($_POST['submit'])) {
